@@ -271,6 +271,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    const currentFabricRef = fabricRef.current;
     // initialize the fabric canvas
     const canvas = initializeFabric({
       canvasRef,
@@ -427,7 +428,7 @@ const Home = () => {
      */
     window.addEventListener("resize", () => {
       handleResize({
-        canvas: fabricRef.current,
+        canvas: currentFabricRef,
       });
     });
 
@@ -440,7 +441,7 @@ const Home = () => {
     window.addEventListener("keydown", (e) =>
       handleKeyDown({
         e,
-        canvas: fabricRef.current,
+        canvas: currentFabricRef,
         undo,
         redo,
         syncShapeInStorage,
@@ -469,7 +470,7 @@ const Home = () => {
       window.removeEventListener("keydown", (e) =>
         handleKeyDown({
           e,
-          canvas: fabricRef.current,
+          canvas: currentFabricRef,
           undo,
           redo,
           syncShapeInStorage,
@@ -477,7 +478,7 @@ const Home = () => {
         })
       );
     };
-  }, [canvasRef]); // run this effect only once when the component mounts and the canvasRef changes
+  }, [deleteShapeFromStorage, redo, syncShapeInStorage, undo]);
 
   // render the canvas when the canvasObjects from live storage changes
   useEffect(() => {

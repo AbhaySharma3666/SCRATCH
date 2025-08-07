@@ -19,8 +19,7 @@ const Dimensions = ({ width, height, isEditingRef, handleInputChange }: Props) =
       {dimensionsOptions.map((item) => (
         <div
           key={item.label}
-          className='flex flex-1 items-center gap-3 rounded-sm'
-        >
+          className='flex flex-1 items-center gap-3 rounded-sm'>
           <Label htmlFor={item.property} className='text-[10px] font-bold'>
             {item.label}
           </Label>

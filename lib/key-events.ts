@@ -4,15 +4,15 @@ import { v4 as uuidv4 } from "uuid";
 import { CustomFabricObject } from "@/types/type";
 
 export const handleCopy = (canvas: fabric.Canvas) => {
-  const activeObjects = canvas.getActiveObjects();
-  if (activeObjects.length > 0) {
-    // Serialize the selected objects
-    const serializedObjects = activeObjects.map((obj) => obj.toObject());
-    // Store the serialized objects in the clipboard
-    localStorage.setItem("clipboard", JSON.stringify(serializedObjects));
+  const activeObject = canvas.getActiveObject();
+  if (activeObject) {
+    // Serialize the selected object
+    const serializedObject = activeObject.toObject();
+    // Store the serialized object in the clipboard
+    localStorage.setItem("clipboard", JSON.stringify(serializedObject));
   }
 
-  return activeObjects;
+  return activeObject;
 };
 
 export const handlePaste = (
